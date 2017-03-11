@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exo1</title>
+</head>
+<body>
+<ol>
+    <li>
+        <ul>
+            <li>Li1</li>
+            <li>Li2</li>
+            <li>Li3</li>
+            <li>Li4</li>
+            <li>Li5</li>
+            <li>Li6</li>
+            <li>Li7</li>
+            <li>Li8</li>
+        </ul>
+    </li>
+</ol>
+<p>Click the button to remove all child nodes of ul.</p>
+<button id="remove">Try it</button>
+
+</body>
+
+<script type="text/javascript" src="../web/vendors/jquery/dist/jquery.js"></script>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+        console.log('/*****************  DEBUT EXO 1 *************/ ');
+
+        $("#remove").on("click", function (e) {
+            e.preventDefault();
+
+            // remplissez l de telle sorte qu'il soit alimenté par les nœuds enfant du tag ul
+
+            var list = document.getElementsByTagName('ul');
+            var l = list.childNodes;
+
+            console.log(list, l);
+
+            // complétez les instructions de façon à supprimer les nœuds enfant du tag ul
+            if (list.hasChildNodes()) {
+                for (var i = 0; i < l.length; i++) {
+                    if (l[i].nodeType === Node.ELEMENT_NODE) {
+                        list.removeChild(list.childNodes[i].firstChild);
+                    }
+                }
+            }
+        });
+
+        // 2eme solution
+        var output = document.getElementsByTagName('ul');
+        var child = output.firstChild;
+
+        while (child) {
+            output.removeChild(child);
+
+            child = output.firstChild;
+        }
+
+        console.log('/*************** FIN EXO 1 *****************/ ');
+
+        console.log('/*************  DEBUT EXO 2 ***********************/ ');
+
+        // Ecrire une méthode permettant d'exécuter une fonction js, au bout d'une durée n,
+        // comme par exemple la méthode t.m1 (sans closure)
+        var t = {
+            message: 'Welcome to Mektoub.',
+            m1: function () {
+                alert(this.message);
+            },
+
+            start: function (delay) {
+                //setInterval(t.m1, delay)
+            }
+        };
+
+        console.log(t.start(10));
+        console.log('/**********  FIN EXO 1 ************************/ ');
+
+        console.log('/*****************  DEBUT EXO 3 *************/ ');
+        // Ecrire une méthode permettant de tester périodiquement
+        // une condition (sous la forme d'une instruction js)
+        // et de déclencher lorsque celle ci est remplie, une fonction js,
+        // avant expiration d'un délai, si ce dernier est renseigné.
+
+        var t = {
+            p1: 'ok',
+            p2: true,
+            counter: 0,
+            m1: function () {
+                alert(this.p1);
+            },
+
+            start: function () {
+                alert("Vous êtes le Numero " + t.counter++ + " sur mektoub");
+            },
+
+            auto_refresh: setInterval(function (n) {
+                for (var i = 0; i < 8000; i++) {
+                    console.log('je suis la');
+                }
+            }, 2000)
+        };
+
+        // par exemple, après l'instruction suivante :
+        setTimeout("t.p2 = false;", 5000);
+
+         setInterval(t.start,5000);
+
+        if (t.p2 == false) {
+            t.auto_refresh();
+        }else {
+            t.m1();
+        }
+        console.log('/*****************  FIN EXO 3 *************/ ');
+
+
+        console.log('/*****************  DEBUT EXO 4 *************/ ');
+
+        var o = {
+
+            somePrivateVariable : 'Hello World',
+
+            get: function() {
+                return this.somePrivateVariable;
+            },
+
+            set: function (newText) {
+                this.somePrivateVariable = newText;
+            }
+        };
+
+        console.log(o.get);
+        console.log(o.set('salut'));
+        console.log('/*****************  FIN EXO 4 *************/ ');
+
+    });
+
+</script>
+</html>

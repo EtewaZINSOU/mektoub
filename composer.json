@@ -1,0 +1,22 @@
+{
+    "name": "etewa/mektoub",
+    "description": "Test for developper mektoub",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "EtewaZINSOU",
+            "email": "etewa.zinsou@gmail.com"
+        }
+    ],
+
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "": "src"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.2"
+    }
+}
